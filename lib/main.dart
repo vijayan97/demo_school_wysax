@@ -25,11 +25,11 @@ class MyApp extends StatelessWidget {
 
         // Define the default brightness and colors.
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.purple,
+          seedColor: Colors.blue,
           // TRY THIS: Change to "Brightness.light"
           //           and see that all colors change
           //           to better contrast a light background.
-          brightness: Brightness.dark,
+          brightness: Brightness.light,
         ),
 
         // Define the default `TextTheme`. Use this to specify the default
@@ -43,9 +43,8 @@ class MyApp extends StatelessWidget {
           //           to "lato", "poppins", or "lora".
           //           The title uses "titleLarge"
           //           and the middle text uses "bodyMedium".
-          titleLarge: GoogleFonts.oswald(
+          titleLarge: GoogleFonts.poppins(
             fontSize: 30,
-            fontStyle: FontStyle.italic,
           ),
           bodyMedium: GoogleFonts.merriweather(),
           displaySmall: GoogleFonts.pacifico(),

@@ -1,5 +1,7 @@
 import 'package:demo_school_wysax/constants/constants.dart';
+import 'package:demo_school_wysax/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,39 +15,44 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: Constants.appName,
-      theme: ThemeData(
+      debugShowCheckedModeBanner: false,
+      /*theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+      ),*/
+      theme: ThemeData(
+        useMaterial3: true,
+
+        // Define the default brightness and colors.
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.purple,
+          // TRY THIS: Change to "Brightness.light"
+          //           and see that all colors change
+          //           to better contrast a light background.
+          brightness: Brightness.dark,
+        ),
+
+        // Define the default `TextTheme`. Use this to specify the default
+        // text styling for headlines, titles, bodies of text, and more.
+        textTheme: TextTheme(
+          displayLarge: const TextStyle(
+            fontSize: 72,
+            fontWeight: FontWeight.bold,
+          ),
+          // TRY THIS: Change one of the GoogleFonts
+          //           to "lato", "poppins", or "lora".
+          //           The title uses "titleLarge"
+          //           and the middle text uses "bodyMedium".
+          titleLarge: GoogleFonts.oswald(
+            fontSize: 30,
+            fontStyle: FontStyle.italic,
+          ),
+          bodyMedium: GoogleFonts.merriweather(),
+          displaySmall: GoogleFonts.pacifico(),
+        ),
       ),
-      home: const MyHomePage(title: Constants.appName),
+      home: const SplashScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Text("Dashboard"),
-      )
-      // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}

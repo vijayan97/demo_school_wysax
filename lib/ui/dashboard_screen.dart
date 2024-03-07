@@ -1,4 +1,3 @@
-import 'package:demo_school_wysax/constants/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -74,28 +73,5 @@ class _DashboardSCreenState extends State<DashboardSCreen> {
     });
   }
 
- /* return Scaffold(
-  key: _scaffoldkey,
-  appBar: AppBar(
-  title: const Text('BottomNavigationBar Demo'),
-  ),
-  bottomNavigationBar: BottomNavigationBar(
-  currentIndex: _selectedIndex, //New
-  onTap: _onItemTapped,
-  items: const <BottomNavigationBarItem>[
-  BottomNavigationBarItem(
-  icon: Icon(Icons.call),
-  label: 'Calls',
-  ),
-  BottomNavigationBarItem(
-  icon: Icon(Icons.camera),
-  label: 'Camera',
-  ),
-  BottomNavigationBarItem(
-  icon: Icon(Icons.chat),
-  label: 'Chats',
-  ),
-  ],
-  ),
-  );*/
+
 }

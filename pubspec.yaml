@@ -71,6 +71,9 @@ flutter:
     - assets/png_images/email.png
     - assets/png_images/setting.png
     - assets/png_images/schedule.png
+    - assets/png_images/checking_attendance.png
+    - assets/png_images/exam.png
+    - assets/png_images/attendant_list.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -9,10 +9,7 @@ final blueScaffoldBackgroundColor  = Color(0xff2584C4);
 final blueTextColor = Color(0xFF343434);
 final blueGreyTextColor = Color(0xff546167);
 final blueCarouselContainerColor = Color(0xff6bbff8);
-final blueCarouselMainHeadingContentColor = Color(0xFF343434);
-final blueViewScreenSecondaryColor = Color(0xFF343434);
-final blueViewScreenPrimaryColor = Color(0xFF707070);
-final blueDashboardScreenSmallPartitionFirstContainerOfStackColor = Color(0xFF343434);
+final blueTextColorLight = Color(0xFF707070);
 final blueBottomNavigationBarColor = Color(0xffEAF6FF);
 final blueBottomNavigationBarIconColor = Color(0xFFFFFFFF);
 final blueDashboardScreenBigPartitionTransparentFilmColor = Color(0xff53a9e3);
@@ -32,35 +29,33 @@ final blueTheme = ThemeData(
     unselectedWidgetColor: unselectedBlueText,
     primaryColorLight: blueCarouselContainerColor,
     primaryColorDark: blueDashboardScreenBigPartitionTransparentFilmColor,
-    backgroundColor: blueDashboardScreenSmallPartitionFirstContainerOfStackColor,
-    bottomAppBarColor: blueBottomNavigationBarColor,
+    indicatorColor: blueTextColor,
+    highlightColor: blueTextColor,
     popupMenuTheme: PopupMenuThemeData(
         color: Colors.white,
         surfaceTintColor: Colors.white,
         textStyle: TextStyle(
-            color: blueViewScreenSecondaryColor
+            color: blueTextColorLight
         )
     ),
     textTheme: TextTheme(
-      headline1: TextStyle(
-        color: blueViewScreenSecondaryColor,
+      labelLarge:TextStyle(
+        color: blueTextColor,
+        fontSize: 16,
+        fontWeight: FontWeight.bold
+      ),labelMedium:TextStyle(
+        color: blueTextColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w700
+      ),labelSmall:TextStyle(
+        color: blueTextColorLight,
+        fontSize: 12,
+        fontWeight: FontWeight.normal
       ),
-      headline2: TextStyle(
-        color: blueGreyTextColor,
-      ),headline3: TextStyle(
-      color: blueBottomNavigationBarColor,
-    ),headline4: TextStyle(
-      color: blueText,
-    ),
-      headline5: TextStyle(
-        color: blueViewScreenPrimaryColor,
-      ),
-      headline6: TextStyle(
-        color: Colors.black,
-      ),
-      subtitle2:  TextStyle(
-          color: Colors.blue
-      ),
-
+      headlineLarge: TextStyle(
+          color: blueTextColor,
+          fontSize: 18,
+          fontWeight: FontWeight.bold
+      )
 
     ).apply(), primaryTextTheme: ThemeData.light().textTheme.apply());

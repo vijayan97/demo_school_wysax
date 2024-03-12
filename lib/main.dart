@@ -43,11 +43,11 @@ class MyApp extends StatelessWidget {
           //           to "lato", "poppins", or "lora".
           //           The title uses "titleLarge"
           //           and the middle text uses "bodyMedium".
-          titleLarge: GoogleFonts.poppins(
+          titleLarge: GoogleFonts.nunito(
             fontSize: 30,
           ),
-          bodyMedium: GoogleFonts.merriweather(),
-          displaySmall: GoogleFonts.pacifico(),
+          bodyMedium: GoogleFonts.nunito(),
+          displaySmall: GoogleFonts.nunito(),
         ),
       ),
       home: const SplashScreen(),

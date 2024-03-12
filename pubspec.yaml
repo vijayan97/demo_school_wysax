@@ -41,6 +41,10 @@ dependencies:
   circular_reveal_animation: ^2.0.1
   flutter_riverpod: ^2.4.10
   persistent_bottom_nav_bar: ^5.0.2
+  carousel_slider: ^4.1.1
+  smooth_page_indicator: ^1.0.0+2
+  animated_text_kit: ^4.2.2
+  lottie: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -73,7 +77,12 @@ flutter:
     - assets/png_images/schedule.png
     - assets/png_images/checking_attendance.png
     - assets/png_images/exam.png
-    - assets/png_images/attendant_list.png
+    - assets/png_images/user.png
+    - assets/app_logo/wysax_logo.png
+    - assets/lottie_icons/sports.json
+    - assets/lottie_icons/xmas.json
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

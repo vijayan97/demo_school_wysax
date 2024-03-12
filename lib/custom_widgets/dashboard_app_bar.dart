@@ -1,10 +1,14 @@
+
 import 'dart:ui';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:demo_school_wysax/constants/style_constants.dart';
 import 'package:demo_school_wysax/ui/home_screen.dart';
-import 'package:demo_school_wysax/ui/menus_search_screen.dart';
+import 'package:demo_school_wysax/ui/chat.dart';
+import 'package:demo_school_wysax/ui/notification_screen.dart';
 import 'package:demo_school_wysax/ui/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -27,6 +31,8 @@ class _DashboardAppBarState extends State<DashboardAppBar> with SingleTickerProv
   int _page = 0;
   int currentIndex = 0;
   bool showBottomSheett = false;
+  int badgeCount =1 ;
+  var media;
 
   List<Map<String, dynamic>> items = [
     {"name": "Item 1", "image": "assets/png_images/calendar.png"},
@@ -42,66 +48,89 @@ class _DashboardAppBarState extends State<DashboardAppBar> with SingleTickerProv
   }
    @override
   Widget build(BuildContext context) {
+     media = MediaQuery.of(context).size;
     return Scaffold(
-
+      resizeToAvoidBottomInset: true,
+      extendBody: true,
+      backgroundColor: Colors.blue.shade50,
       key: _scaffoldkey,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text(Constants.appName, style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              overflow: TextOverflow.ellipsis,
-              fontWeight: FontWeight.bold
-          ),),
-          centerTitle: false,
-          elevation: 0,
-          backgroundColor: Colors.transparent ,
-          actions: [
-            InkWell(
-              onTap: ()
-              {
-
-              },
-              child: Icon(Icons.school,  size: 24,),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            InkWell(
-              onTap: ()
-              {
-
-              },
-              child: Icon(Icons.language,  size: 24,),
-            ),SizedBox(
-              width: 10,
-            ),
-            InkWell(
-              onTap: ()
-              {
-
-              },
-              child: Icon(Icons.notifications,  size: 24,),
-            ),SizedBox(
-              width: 10,
-            ),
-            InkWell(
-              onTap: ()
-              {
-
-              },
-              child: Icon(Icons.logout, size: 24,),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-          ],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        titleSpacing: 0,
+        elevation: 0,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Image.asset('assets/app_logo/wysax_logo.png', width: 150,height: 50,),
         ),
-
-        body: Stack(
-          children: [
-            _page == 0 ? HomeScreen() : _page == 1 ? MenusSearchScreen() :
-                _page == 3 ? ProfileScreen() :  HomeScreen()
-          ],
+        actions: [
+          Visibility(
+            child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScreen()));
+                },
+                child: Padding(
+                  padding:  const EdgeInsets.only( right: 10.0, left: 10, top: 5, bottom: 5),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 5),
+                        child: Container(
+                          child: Icon(Icons.notifications, size: 30,),
+                        ),
+                      ),
+                      badgeCount > 0
+                          ? Positioned(
+                        right: 4,
+                        top: 1,
+                        child: Container(
+                          padding: const EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          constraints: const BoxConstraints(
+                            minWidth: 14,
+                            minHeight: 14,
+                          ),
+                          child: Text(
+                            '$badgeCount',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 8,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      )
+                          : const SizedBox(width: 0,)
+                    ],
+                  ),
+                )
+            ),
+          ),
+        ],
+      ),
+        body: Container(
+          height: media.height,
+          width: media.width,
+          decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [
+                        Colors.blue.shade50,
+                        Colors.white,
+                      ],
+                    )
+                ),
+          child: Stack(
+            children: [
+              _page == 0 ? const HomeScreen() : _page == 1 ? const ChatScreen() :
+                  _page == 3 ? const ProfileScreen() :  const HomeScreen()
+            ],
+          ),
         ),
         bottomNavigationBar: CurvedNavigationBar(
           key: _bottomNavigationKey,
@@ -109,9 +138,9 @@ class _DashboardAppBarState extends State<DashboardAppBar> with SingleTickerProv
           animationDuration: const Duration(milliseconds: 400),
           backgroundColor: Colors.transparent,
           color: Theme.of(context).primaryColor,
-          items: <Widget>[
-            Icon(Icons.home, color: Colors.white,),
-            Icon(Icons.search,color: Colors.white,),
+          items: const <Widget>[
+            Icon(Icons.dashboard, color: Colors.white,),
+            Icon(Icons.chat,color: Colors.white,),
             Icon(Icons.layers,color: Colors.white,),
             Icon(Icons.person,color: Colors.white,),
             Icon(Icons.menu,color: Colors.white,),
@@ -135,7 +164,9 @@ class _DashboardAppBarState extends State<DashboardAppBar> with SingleTickerProv
                       animationController: animationController,
                       onClosing: () {
 
-                        print('on closing');
+                        if (kDebugMode) {
+                          print('on closing');
+                        }
                         final CurvedNavigationBarState? navBarState =
                             _bottomNavigationKey.currentState;
                         navBarState?.setPage(currentIndex);
@@ -169,7 +200,9 @@ class _DashboardAppBarState extends State<DashboardAppBar> with SingleTickerProv
                                     onTap: ()
                                     {
                                       setState(() {
-                                        print(currentIndex);
+                                        if (kDebugMode) {
+                                          print(currentIndex);
+                                        }
 
                                         final CurvedNavigationBarState? navBarState =
                                             _bottomNavigationKey.currentState;
@@ -194,8 +227,8 @@ class _DashboardAppBarState extends State<DashboardAppBar> with SingleTickerProv
                                   ),
 
                                   Container(
-                                    margin: EdgeInsets.symmetric(vertical: 15),
-                                    child:  Text("Quick Access",
+                                    margin: const EdgeInsets.symmetric(vertical: 15),
+                                    child:  const Text("Quick Access",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18,
@@ -326,21 +359,13 @@ class GridItem extends StatelessWidget {
                   children: [
                     Text(
                       items[index]['name'], // Name from the sample data
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF343434)
-                      ),
-                    ), Text(
+                      style: MyTextStyle.simpleTextStyle,
+                    ),
+                    Text(
                       items[index]['description'],
                       maxLines: 3,
                       overflow: TextOverflow.visible,// Name from the sample data
-                      style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.normal,
-                          color: Color(0xFF707070),
-                          overflow: TextOverflow.visible,
-                      ),
+                      style: MyTextStyle.simpleTextStyleFontSize11,
                     ),
                   ],
                 ),

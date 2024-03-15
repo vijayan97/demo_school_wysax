@@ -70,17 +70,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/png_images/calendar.png
-    - assets/png_images/chat.png
-    - assets/png_images/email.png
-    - assets/png_images/setting.png
-    - assets/png_images/schedule.png
-    - assets/png_images/checking_attendance.png
-    - assets/png_images/exam.png
-    - assets/png_images/user.png
-    - assets/app_logo/wysax_logo.png
-    - assets/lottie_icons/sports.json
-    - assets/lottie_icons/xmas.json
+    - assets/png_images/
+    - assets/app_logo/
+    - assets/lottie_icons/
+    - assets/png_images/menus_icon/
 
 
 

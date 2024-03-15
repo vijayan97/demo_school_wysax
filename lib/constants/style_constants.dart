@@ -1,6 +1,4 @@
 import 'dart:ui';
-
-import 'package:demo_school_wysax/utils/theme_value.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +23,12 @@ class MyTextStyle {
           fontWeight: FontWeight.bold,
           color: Color(0xFF343434),
           overflow: TextOverflow.visible
+  );
+  static  TextStyle simpleTextStyleEllipsis = const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+          color: Color(0xFF343434),
+          overflow: TextOverflow.ellipsis
   );
   static  TextStyle simpleTextStyleFontSize11 = const TextStyle(
     fontSize: 11,

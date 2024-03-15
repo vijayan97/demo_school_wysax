@@ -1,18 +1,14 @@
-
-import 'dart:ui';
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:demo_school_wysax/constants/style_constants.dart';
 import 'package:demo_school_wysax/ui/home_screen.dart';
 import 'package:demo_school_wysax/ui/chat.dart';
 import 'package:demo_school_wysax/ui/notification_screen.dart';
 import 'package:demo_school_wysax/ui/profile_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../constants/constants.dart';
+import '../ui/menus_screen.dart';
 
 class DashboardAppBar extends StatefulWidget {
   final Widget childWidget;
@@ -128,7 +124,7 @@ class _DashboardAppBarState extends State<DashboardAppBar> with SingleTickerProv
           child: Stack(
             children: [
               _page == 0 ? const HomeScreen() : _page == 1 ? const ChatScreen() :
-                  _page == 3 ? const ProfileScreen() :  const HomeScreen()
+                  _page == 3 ? const ProfileScreen() :  _page == 4 ?   const MainMenuScreen() : HomeScreen()
             ],
           ),
         ),
@@ -268,21 +264,7 @@ class _DashboardAppBarState extends State<DashboardAppBar> with SingleTickerProv
 
                   }, enableDrag: true,);
             }
-            else if(index == 4)
-            {
-              _page = index;
-              showBottomSheett = true;
-              _scaffoldkey.currentState?.showBottomSheet((_) => Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.width,
-                  child: Text('this is a bottomsheet for 4'),
-                ));
-              }
-              else
+            else
               {
                 setState(() {
                   currentIndex = index;
